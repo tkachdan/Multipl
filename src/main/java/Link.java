@@ -3,6 +3,7 @@
  */
 public class Link implements Chain {
     private Chain nextChain;
+
     @Override
     public void setNextChain(Chain chain) {
         this.nextChain = chain;
@@ -10,8 +11,9 @@ public class Link implements Chain {
 
     @Override
     public void printMessage(Message message) {
-        if(nextChain != null){
-            System.out.println("Message:");
+        System.out.println("Link: send(\"MAC" + message.getFrameHeader() + ":IP"+message.getIp()+":Port" + message.getPort() +
+                ":From" + message.getFrom() + ">" + message.getMessage() + "\")");
+        if (nextChain != null) {
             nextChain.printMessage(message);
         }
     }

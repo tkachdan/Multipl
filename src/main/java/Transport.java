@@ -11,8 +11,11 @@ public class Transport implements Chain {
 
     @Override
     public void printMessage(Message message) {
-        if(nextChain != null){
-            System.out.println("Transport: mux(Port"+message.getPort()+":"+"From "+message.getFrom()+">"+ message.getMessage());
+
+        System.out.println("Transport: mux(\"Port" + message.getPort() +
+                ":From" + message.getFrom() + ">" + message.getMessage() + "\")");
+
+        if (nextChain != null) {
             nextChain.printMessage(message);
         }
     }

@@ -10,8 +10,11 @@ public class Application implements Chain {
 
     @Override
     public void printMessage(Message message) {
+        //Application: mux(“From Sarah>Hey Joel what’s up?”);
+
+            System.out.println("Application: mux(\"From" + message.getFrom()+">"+ message.getMessage()+"\")");
+
         if(nextChain != null){
-            System.out.println("Message:"+ message.getMessage());
             nextChain.printMessage(message);
         }
     }

@@ -15,7 +15,23 @@ public class Example {
         transport.setNextChain(internet);
         internet.setNextChain(link);
 
+        System.out.println("Message:" + message.getMessage());
         application.printMessage(message);
+
+
+        System.out.println("------------------------------");
+        message = new Message("Not so much","Joel",2,2,2);
+        System.out.println("Message:" + message.getMessage());
+        link = new Link();
+        internet = new Internet();
+        transport = new Transport();
+        application = new Application();
+
+        link.setNextChain(internet);
+        internet.setNextChain(transport);
+        transport.setNextChain(application);
+
+        link.printMessage(message);
 
     }
 

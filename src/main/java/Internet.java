@@ -10,8 +10,10 @@ public class Internet  implements Chain {
 
     @Override
     public void printMessage(Message message) {
-        if(nextChain != null){
-            System.out.println("Message:");
+
+        System.out.println("Internet: mux(\"IP"+message.getIp()+":Port"+message.getPort()+
+                    ":From" + message.getFrom()+">"+ message.getMessage()+"\")");
+        if(nextChain != null) {
             nextChain.printMessage(message);
         }
     }
