@@ -3,6 +3,7 @@
  */
 public class Application implements Chain {
     private Chain nextChain;
+
     @Override
     public void setNextChain(Chain chain) {
         this.nextChain = chain;
@@ -10,12 +11,26 @@ public class Application implements Chain {
 
     @Override
     public void printMessage(Message message) {
-        //Application: mux(“From Sarah>Hey Joel what’s up?”);
+        System.out.println("\"Application: mux(\"From Sarah>" + message.getMessage() + "\")");
+        String msg = message.getMessage();
+        String tmp = "From Sarah>";
+        tmp += msg;
+        message.setMessage(tmp);
 
-            System.out.println("Application: mux(\"From" + message.getFrom()+">"+ message.getMessage()+"\")");
 
-        if(nextChain != null){
+        if (nextChain != null) {
             nextChain.printMessage(message);
+        }
+    }
+
+    @Override
+    public void reversePrint(Message message) {
+        String tmp = message.getMessage();
+        tmp = tmp.substring(tmp.indexOf(">") + 1);
+        message.setMessage(tmp);
+        System.out.println("\"Application: print(\"" + message.getMessage() +"\")");
+        if (nextChain != null) {
+            nextChain.reversePrint(message);
         }
     }
 }

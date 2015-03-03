@@ -5,4 +5,6 @@ public interface Chain {
     public void setNextChain(Chain chain);
 
     public void printMessage(Message message);
+
+    public void reversePrint(Message message);
 }

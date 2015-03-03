@@ -4,7 +4,7 @@
 public class Example {
 
     public static void main(String[] args) {
-        Message message = new Message("Hey Joel what’s up? ","Sarah",1,1,1);
+        Message message = new Message("Hey Joel what’s up?");
 
         Chain application = new Application();
         Chain transport = new Transport();
@@ -20,8 +20,8 @@ public class Example {
 
 
         System.out.println("------------------------------");
-        message = new Message("Not so much","Joel",2,2,2);
-        System.out.println("Message:" + message.getMessage());
+        message = new Message("MAC2:IP2:Port2:From Joel>Not much");
+        System.out.println("Recv(\"Message:" + message.getMessage()+"\")");
         link = new Link();
         internet = new Internet();
         transport = new Transport();
@@ -31,7 +31,7 @@ public class Example {
         internet.setNextChain(transport);
         transport.setNextChain(application);
 
-        link.printMessage(message);
+        link.reversePrint(message);
 
     }
 
